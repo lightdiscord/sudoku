@@ -14,7 +14,12 @@ fn main() -> Fallible<()> {
 
     file.read_to_string(&mut buffer)?;
 
-    println!("{:#?}", Sudoku::from_str(&buffer)?);
+    let ku = Sudoku::from_str(&buffer)?;
+
+    println!("{:#?}", ku.row(0));
+    println!("{:#?}", ku.column(0));
+    println!("{:#?}", ku.block(0, 0).values());
+    println!("{}", ku.solve());
 
     Ok(())
 }
