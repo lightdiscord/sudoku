@@ -5,3 +5,4 @@ authors = ["LightDiscord <root@arnaud.sh>"]
 edition = "2018"
 
 [dependencies]
+failure = "*"
