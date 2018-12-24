@@ -7,7 +7,7 @@ use failure::Fallible;
 use sudoku::Sudoku;
 
 fn main() -> Fallible<()> {
-    println!("Hello, world! Here is a {} crate!", sudoku::SUDOKU);
+    println!("Hello, world! Here is a Sudoku crate!");
 
     let mut file = File::open("./content/sudoku01/entry.txt")?;
     let mut buffer = String::new();
@@ -19,7 +19,7 @@ fn main() -> Fallible<()> {
     println!("{:#?}", ku.row(0));
     println!("{:#?}", ku.column(0));
     println!("{:#?}", ku.block(0, 0).values());
-    println!("{}", ku.solve());
+    println!("{}", ku.solve()?);
 
     Ok(())
 }

@@ -6,3 +6,7 @@ edition = "2018"
 
 [dependencies]
 failure = "*"
+
+[dependencies.arrayvec]
+version = "*"
+features = ["array-sizes-33-128"]
