@@ -1,25 +1,16 @@
-use std::fs::File;
-use std::io::prelude::*;
+use std::io::{ self, Read };
 use std::str::FromStr;
-
 use failure::Fallible;
-
 use sudoku::Sudoku;
 
 fn main() -> Fallible<()> {
-    println!("Hello, world! Here is a Sudoku crate!");
-
-    let mut file = File::open("./content/sudoku01/entry.txt")?;
     let mut buffer = String::new();
+    io::stdin().read_to_string(&mut buffer)?;
 
-    file.read_to_string(&mut buffer)?;
+    let sudoku = Sudoku::from_str(&buffer)?;
+    let sudoku = sudoku.solve()?;
 
-    let ku = Sudoku::from_str(&buffer)?;
-
-    println!("{:#?}", ku.row(0));
-    println!("{:#?}", ku.column(0));
-    println!("{:#?}", ku.block(0, 0).values());
-    println!("{}", ku.solve()?);
+    println!("{}", sudoku);
 
     Ok(())
 }
